@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <script>
+        function fetchTextAndUpdate() {
+            fetch('http://localhost:3000/getText')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('textToChange').innerText = data;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        }
+    </script>
 </head>
 <body>
 
-<button>Click Me</button>
-<p>No Text</p>
+<button onclick="fetchTextAndUpdate()">Click Me</button>
+<p id="textToChange">No Text</p>
 
 </body>
 </html>
